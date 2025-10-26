@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TextSpark | Campaign Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+  <div class="max-w-2xl mx-auto px-6 py-10 mt-10 bg-gray-800/90 backdrop-blur shadow-2xl rounded-2xl animate-fade-in">
+    <h1 class="text-3xl font-bold mb-6 text-center text-blue-400 tracking-tight">Campaign Creation</h1>
+    
+    <form id="campaignForm" class="space-y-6">
+      <!-- Business Name -->
+      <div>
+        <label class="block font-medium mb-1">Business Name</label>
+        <input type="text" name="business_name" required placeholder="e.g., Chai Wala" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:ring focus:ring-blue-500"/>
+      </div>
+
+      <!-- Business Description -->
+      <div>
+        <label class="block font-medium mb-1">Business Description</label>
+        <textarea name="description" required rows="3" placeholder="Describe your business in 10-11 lines" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600"></textarea>
+      </div>
+
+      <!-- Category -->
+      <div>
+        <label class="block font-medium mb-1">Category</label>
+        <select name="category" id="categorySelect" required class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600">
+          <option value="">Select Category</option>
+          <option value="F&B">Food & Beverage</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Services">Services</option>
+          <option value="Health">Health</option>
+          <option value="Tech">Tech</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" name="category_other" id="categoryOtherInput" placeholder="Enter custom category" class="w-full mt-3 p-3 rounded-lg bg-gray-700 border border-gray-600 hidden"/>
+      </div>
+
+      <!-- Target Goal -->
+      <div>
+        <label class="block font-medium mb-1">Target Goal</label>
+        <select name="target" id="targetSelect" required class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600">
+          <option value="">Select Goal</option>
+          <option value="Awareness">Awareness</option>
+          <option value="Growth">Growth</option>
+          <option value="Engagement">Engagement</option>
+          <option value="Conversion">Conversion</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" name="target_other" id="targetOtherInput" placeholder="Enter custom goal" class="w-full mt-3 p-3 rounded-lg bg-gray-700 border border-gray-600 hidden"/>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 rounded-xl shadow-lg transition-all duration-200">
+        Launch Campaign
+      </button>
+    </form>
+
+    <div id="result" class="mt-6 text-green-400 text-center font-medium hidden"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
